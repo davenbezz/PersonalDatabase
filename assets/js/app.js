@@ -16,13 +16,13 @@ let person = {
         if (tempAge >= 18) { this.eligibleToVote = true; } else { this.eligibleToVote = false; }
     },
     calBmi: function(h, w){
-        BMI =  w/(h*h);
+        BMI =  w/(h**2);
         if(BMI < 18.5){
-            return "---"+BMI+"---" + "\nYou're Underweight";
+            return "BMI: "+BMI.toFixed(1)+"\tYou're Underweight.";
         }else if(BMI < 25){
-            return "---"+BMI+"---" + "\n Your're Normal";
+            return "BMI: "+BMI.toFixed(1)+"\tYour're Normal.";
         }else{
-            return "---"+BMI+"---" + "\n You're Overweight"
+            return "BMI: "+BMI.toFixed(1)+"\t You're Overweight.";
         }
     }
 
