@@ -56,29 +56,33 @@ person.familyNo = prompt("How many family member do you have? ");
 //Number Age
 person.tempAge = person.dateofBirth(person.birthYear);
 if(person.tempAge >= 18){
-    eligibleToVote = true;
+    person.eligibleToVote = true;
 }else{
-    eligibleToVote = false;
+    person.eligibleToVote = false;
 }
 
 //recieve each family member by for loop
 for (let index = 0; index < parseInt(person.familyNo); index++) {
-    person.familyMembers[index] = prompt("Family Member " + index+1);
+    person.familyMembers[index] = prompt("Family Member " + (parseInt(index)+1));
 }
+(function(){
+    console.log("---Here's your profile---");
+    console.log("Full Name: " + person.fn + " " + person.sn);
+    console.log("Proffession: " + person.job);
+    console.log("Can you vote? " + person.dateofBirth()+ " so " + person.eligibleToVote);
+    console.log("---Family Members---")
+    person.familyMembers.forEach(function(member, index){
+        console.log("Family Member "  + (parseInt(index)+1) + ". Member name: "  + member);
+    });
+    console.log(person.calBmi(person.h, person.w));
+})();
 
-console.log("Here's your profile !!!");
-console.log("Full Name: " + person.fn + " " + person.sn);
-console.log("Proffession: " + person.job);
-console.log("Can you vote? " + person.dateofBirth() + person.eligibleToVote);
 
 
-person.familyMembers.forEach(function(member){
-    console.log("Family Member "  + " " + member);
-});
+
 
 // person.dateofBirth(){
 //     return new Date().getFullYear() - birthYear;
 // }
 
 //bmi calculator 
-console.log(person.calBmi(person.h, person.w));
