@@ -1,10 +1,10 @@
-function deposit(name, account, money) {
+function deposit(account, money) {
     account += money;
-    return "Deposited succesfully.\nAccount balance information\nName: " + name +"  \nYour account balance is " + account+"$";
+    return "Deposited succesfully. \nYour account balance is " + account+"$";
 }
 function withdraw(account, money) {
     if(account < money){
-        return "You don't have such kind of money.";
+        return "You don't have such kind of money.\nYour account balance is: "+account;
     }else if(money > 5000 || money < 20){
         return "Not a valid amount";
     }
@@ -13,13 +13,14 @@ function withdraw(account, money) {
         return "Withdrawed succesfully.\nYour account balance is " + account+"$";
     }
 }
-function balance(account) {
-    return "Your account balance is: " + account+"$";
+function balance(name, age, account) {
+    let ID = Math.floor(Math.random() * (1000999 - 1000000)) + 1000000;
+    return "Your account balance information\n\nFull Name: "+name+"\nAge: " + age+"\nAccount ID: "+ID + "\nAccount Balance: "+ account+"$";
 }
 function transfer(account1, account2, money){
     let reason = prompt('What is the reason for transfer?');
     if(account1 < money){
-        return "You don't have such kind of money.";
+        return "You don't have such kind of money.\nYour account balance is: "+account1;
     }else{
         account1 -= money;
         account2 += money;
@@ -28,6 +29,7 @@ function transfer(account1, account2, money){
 }
 (function(){
     let name = prompt('Enter your full name');
+    let age = prompt('Enter your age');
     let account1 = prompt('Enter your account balance: ');
     let account2 = 0;
     let operation = prompt('Enter what you want to do:\n1: Deposit\n2: Withdraw\n3: Balance\n4: Transfer');
@@ -50,7 +52,7 @@ function transfer(account1, account2, money){
             console.log(withdraw(account1, money));
         }
     }else if(operation == 3){
-        console.log(Balance);
+        console.log(balance(name, age, account1));
     }else if(operation == 4){
         let money = prompt('Enter how much money you want to transfer.');
         money = parseInt(money);
