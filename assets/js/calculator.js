@@ -46,8 +46,36 @@ function divide(val){
         return 'Please enter a valid denominator.';
     }
 }
+function modify(result){
+    console.log('=========================================');
+    console.log('|\t\t\t\t\t\t\t\t\t\t|');
+    console.log('|\t\t\t\t\t'+result+'\t\t\t\t\t|');
+    console.log('|\t\t\t\t\t\t\t\t\t\t|');
+    var a = '';
+    for (let index = 0; index < result.toString().length; index++) {
+        a += "==";
+    }
+    console.log(a);
+    return '=========================================';
+}
+(function(){
+    var operator = prompt('Enter operator: \'+, -, *, /\'');
+    var string = prompt('Enter your array of operation: ');
+    switch(operator){
+        case '+':
+            console.log(modify(add(string)));
+            break;
+        case '-':
+            console.log(modify(subtract(string)));
+            break;
+        case '*':
+            console.log(modify(multiply(string)));
+            break;
+        case '/':
+            console.log(modify(divide(string)));
+            break;
+        default:
+            console.log('Please enter a valid operator');
+    }
+})();
 
-console.log(divide('27/3/4/9'));
-console.log(multiply('4*4*3*1'));
-console.log(add('2+5+9'));
-console.log(subtract('2-7-7-9'));
