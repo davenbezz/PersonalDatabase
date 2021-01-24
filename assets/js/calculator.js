@@ -1,6 +1,6 @@
 function add(val) {
     let result = 0;
-    const numbers = val.split('+');
+    const numbers = val.split(' ');
     numbers.forEach(number => {
         result += parseInt(number);
     });
@@ -8,14 +8,14 @@ function add(val) {
 }
 function multiply(val) {
     let result = 1;
-    const numbers = val.split('*');
+    const numbers = val.split(' ');
     numbers.forEach(number => {
         result *= parseInt(number);
     });
     return result;
 }
 function subtract(val){
-    const numbers = val.split('-');
+    const numbers = val.split(' ');
     let result = numbers.shift();
     numbers.forEach(number => {
         result -= parseInt(number);
@@ -26,7 +26,7 @@ function subtract(val){
 function divide(val){
     let work = true;
     function isTrue(val){
-        numbers = val.split('/');
+        numbers = val.split(' ');
         numbers.shift();
         numbers.forEach(number =>{
             if(number == '0'){
@@ -36,7 +36,7 @@ function divide(val){
     }
     isTrue(val);
     if(work){
-        numbers = val.split('/');
+        numbers = val.split(' ');
         let result = parseInt(numbers.shift());
         numbers.forEach(number => {
             result /= parseInt(number);
@@ -47,20 +47,22 @@ function divide(val){
     }
 }
 function modify(result){
-    console.log('=========================================');
-    console.log('|\t\t\t\t\t\t\t\t\t\t|');
-    console.log('|\t\t\t\t\t'+result+'\t\t\t\t\t|');
-    console.log('|\t\t\t\t\t\t\t\t\t\t|');
     var a = '';
     for (let index = 0; index < result.toString().length; index++) {
-        a += "==";
+        a += "=";
     }
     console.log(a);
-    return '=========================================';
+    console.log(result);
+    
+    return a;
 }
 (function(){
-    var operator = prompt('Enter operator: \'+, -, *, /\'');
-    var string = prompt('Enter your array of operation: ');
+    do{
+    var operator = prompt('Enter operator: \n + : addition\n - : subtraction\n / : division\n * : multiplication \n 0 : to end operation');
+    if(operator == 0){
+        break;
+    }
+    var string = prompt('Enter your array of operation (separate it by space): ');
     switch(operator){
         case '+':
             console.log(modify(add(string)));
@@ -75,7 +77,8 @@ function modify(result){
             console.log(modify(divide(string)));
             break;
         default:
-            console.log('Please enter a valid operator');
+            console.log(modify(('Please enter a valid operator')));
     }
+} while(operator != 0);
+console.log('Thank you for using!\nDo come again!');
 })();
-
